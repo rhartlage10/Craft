@@ -9,6 +9,8 @@ Credit to Michael Fogleman for the bulk of the code used in this forked project.
 ### Contributors to This Forked Project
 
 * Ronni Hartlage
+* Madison Perry
+* Benjamin Hardesty
 
 ### Features Added By Ronni, Mad, and Ben
 
