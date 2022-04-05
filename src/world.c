@@ -62,16 +62,17 @@ void create_world(int p, int q, world_func func, void *arg) {
                     }
                 }
             }
+	    // might replace w/stars
             // clouds
-            if (SHOW_CLOUDS) {
-                for (int y = 64; y < 72; y++) {
-                    if (simplex3(
-                        x * 0.01, y * 0.1, z * 0.01, 8, 0.5, 2) > 0.75)
-                    {
-                        func(x, y, z, 16 * flag, arg);
-                    }
-                }
-            }
+            //if (SHOW_CLOUDS) {
+            //    for (int y = 64; y < 72; y++) {
+            //        if (simplex3(
+            //            x * 0.01, y * 0.1, z * 0.01, 8, 0.5, 2) > 0.75)
+            //        {
+            //            func(x, y, z, 16 * flag, arg);
+            //        }
+            //    }
+            //}
         }
     }
 }
