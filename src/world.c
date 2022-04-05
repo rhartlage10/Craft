@@ -64,10 +64,12 @@ void create_world(int p, int q, world_func func, void *arg) {
             }
             // stars
             if (SHOW_STARS) {
-		// 80 -> 100
+		// stars show from y 100-150
 		for (int y = 100; y < 150; y++) {
+		    // simplex3 parameters: : x, y, z, octaves, persistance, lacunarity
+		    // uses perlin noise function simplex3 from noise.c (deps/noise/noise.c)  
 		    if (simplex3(x * 0.01, y * 0.1, z * 0.01, 10, 0.9, 3) > 0.75) {
-			// without "16 *" block is a star
+			// "16 *" flag is the white block 
 			func (x, y, z, 16 * flag, arg);
 		    }
 		}
