@@ -20,6 +20,11 @@
 #include "util.h"
 #include "world.h"
 
+// added by Ronni
+//#include <windows.h>
+//#include <mmsystem.h>
+//#include <cstudio>
+
 #define MAX_CHUNKS 8192
 #define MAX_PLAYERS 128
 #define WORKERS 4
@@ -159,6 +164,12 @@ static Model *g = &model;
 int chunked(float x) {
     return floorf(roundf(x) / CHUNK_SIZE);
 }
+
+// added by Ronni
+//void playSound {
+    //cout << "Test sound" << endl;
+    //PlaySound(TEXT("test.wav"), NULL, SND_FILENAME | SND_ASYNC);
+//}
 
 float time_of_day() {
     if (g->day_length <= 0) {
