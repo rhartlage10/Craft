@@ -20,11 +20,6 @@
 #include "util.h"
 #include "world.h"
 
-// added by Ronni
-//#include <windows.h>
-//#include <mmsystem.h>
-//#include <cstudio>
-
 #define MAX_CHUNKS 8192
 #define MAX_PLAYERS 128
 #define WORKERS 4
@@ -140,6 +135,8 @@ typedef struct {
     int observe1;
     int observe2;
     int flying;
+    int speed;
+    int doubleSpeed;
     int item_index;
     int scale;
     int ortho;
@@ -164,12 +161,6 @@ static Model *g = &model;
 int chunked(float x) {
     return floorf(roundf(x) / CHUNK_SIZE);
 }
-
-// added by Ronni
-//void playSound {
-    //cout << "Test sound" << endl;
-    //PlaySound(TEXT("test.wav"), NULL, SND_FILENAME | SND_ASYNC);
-//}
 
 float time_of_day() {
     if (g->day_length <= 0) {
@@ -2450,6 +2441,10 @@ void handle_movement(double dt) {
         }
     }
     float speed = g->flying ? 20 : 5;
+    // hold 'Q' to double the speed
+    if (glfwGetKey(g->window, CRAFT_KEY_SPRINT)) {
+    	speed *= 2;
+    }
     int estimate = roundf(sqrtf(
         powf(vx * speed, 2) +
         powf(vy * speed + ABS(dy) * 2, 2) +
