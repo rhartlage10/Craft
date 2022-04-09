@@ -18,6 +18,7 @@
 #define SHOW_LIGHTS 1
 #define SHOW_PLANTS 1
 #define SHOW_STARS 1
+#define SHOW_EARTH 1
 #define SHOW_TREES 1
 #define SHOW_ITEM 1
 #define SHOW_CROSSHAIRS 1
