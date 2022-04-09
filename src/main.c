@@ -135,6 +135,8 @@ typedef struct {
     int observe1;
     int observe2;
     int flying;
+    int speed;
+    int doubleSpeed;
     int item_index;
     int scale;
     int ortho;
@@ -2439,6 +2441,10 @@ void handle_movement(double dt) {
         }
     }
     float speed = g->flying ? 20 : 5;
+    // hold 'Q' to double the speed
+    if (glfwGetKey(g->window, CRAFT_KEY_SPRINT)) {
+    	speed *= 2;
+    }
     int estimate = roundf(sqrtf(
         powf(vx * speed, 2) +
         powf(vy * speed + ABS(dy) * 2, 2) +
