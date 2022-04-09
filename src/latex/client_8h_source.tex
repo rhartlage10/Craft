@@ -1,0 +1,28 @@
+\hypertarget{client_8h_source}{}\doxysection{client.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_client\_h\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_client\_h\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define DEFAULT\_PORT 4080}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keywordtype}{void} client\_enable();}
+\DoxyCodeLine{7 \textcolor{keywordtype}{void} client\_disable();}
+\DoxyCodeLine{8 \textcolor{keywordtype}{int} get\_client\_enabled();}
+\DoxyCodeLine{9 \textcolor{keywordtype}{void} client\_connect(\textcolor{keywordtype}{char} *hostname, \textcolor{keywordtype}{int} port);}
+\DoxyCodeLine{10 \textcolor{keywordtype}{void} client\_start();}
+\DoxyCodeLine{11 \textcolor{keywordtype}{void} client\_stop();}
+\DoxyCodeLine{12 \textcolor{keywordtype}{void} client\_send(\textcolor{keywordtype}{char} *data);}
+\DoxyCodeLine{13 \textcolor{keywordtype}{char} *client\_recv();}
+\DoxyCodeLine{14 \textcolor{keywordtype}{void} client\_version(\textcolor{keywordtype}{int} version);}
+\DoxyCodeLine{15 \textcolor{keywordtype}{void} client\_login(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *username, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *identity\_token);}
+\DoxyCodeLine{16 \textcolor{keywordtype}{void} client\_position(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} z, \textcolor{keywordtype}{float} rx, \textcolor{keywordtype}{float} ry);}
+\DoxyCodeLine{17 \textcolor{keywordtype}{void} client\_chunk(\textcolor{keywordtype}{int} p, \textcolor{keywordtype}{int} q, \textcolor{keywordtype}{int} key);}
+\DoxyCodeLine{18 \textcolor{keywordtype}{void} client\_block(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{int} w);}
+\DoxyCodeLine{19 \textcolor{keywordtype}{void} client\_light(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{int} w);}
+\DoxyCodeLine{20 \textcolor{keywordtype}{void} client\_sign(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{int} face, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *text);}
+\DoxyCodeLine{21 \textcolor{keywordtype}{void} client\_talk(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *text);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

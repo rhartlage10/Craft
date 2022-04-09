@@ -1,0 +1,33 @@
+\hypertarget{sign_8h_source}{}\doxysection{sign.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_sign\_h\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_sign\_h\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAX\_SIGN\_LENGTH 64}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{7     \textcolor{keywordtype}{int} x;}
+\DoxyCodeLine{8     \textcolor{keywordtype}{int} y;}
+\DoxyCodeLine{9     \textcolor{keywordtype}{int} z;}
+\DoxyCodeLine{10     \textcolor{keywordtype}{int} face;}
+\DoxyCodeLine{11     \textcolor{keywordtype}{char} text[MAX\_SIGN\_LENGTH];}
+\DoxyCodeLine{12 \} \mbox{\hyperlink{structSign}{Sign}};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{15     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} capacity;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} size;}
+\DoxyCodeLine{17     \mbox{\hyperlink{structSign}{Sign}} *data;}
+\DoxyCodeLine{18 \} \mbox{\hyperlink{structSignList}{SignList}};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keywordtype}{void} sign\_list\_alloc(\mbox{\hyperlink{structSignList}{SignList}} *list, \textcolor{keywordtype}{int} capacity);}
+\DoxyCodeLine{21 \textcolor{keywordtype}{void} sign\_list\_free(\mbox{\hyperlink{structSignList}{SignList}} *list);}
+\DoxyCodeLine{22 \textcolor{keywordtype}{void} sign\_list\_grow(\mbox{\hyperlink{structSignList}{SignList}} *list);}
+\DoxyCodeLine{23 \textcolor{keywordtype}{void} sign\_list\_add(}
+\DoxyCodeLine{24     \mbox{\hyperlink{structSignList}{SignList}} *list, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{int} face, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *text);}
+\DoxyCodeLine{25 \textcolor{keywordtype}{int} sign\_list\_remove(\mbox{\hyperlink{structSignList}{SignList}} *list, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{int} face);}
+\DoxyCodeLine{26 \textcolor{keywordtype}{int} sign\_list\_remove\_all(\mbox{\hyperlink{structSignList}{SignList}} *list, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z);}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,50 @@
+\hypertarget{map_8h_source}{}\doxysection{map.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_map\_h\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_map\_h\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define EMPTY\_ENTRY(entry) ((entry)-\/>value == 0)}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define MAP\_FOR\_EACH(map, ex, ey, ez, ew) \(\backslash\)}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{    for (unsigned int i = 0; i <= map-\/>mask; i++) \{ \(\backslash\)}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{        MapEntry *entry = map-\/>data + i; \(\backslash\)}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{        if (EMPTY\_ENTRY(entry)) \{ \(\backslash\)}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{            continue; \(\backslash\)}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{        \} \(\backslash\)}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{        int ex = entry-\/>e.x + map-\/>dx; \(\backslash\)}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{        int ey = entry-\/>e.y + map-\/>dy; \(\backslash\)}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{        int ez = entry-\/>e.z + map-\/>dz; \(\backslash\)}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{        int ew = entry-\/>e.w;}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define END\_MAP\_FOR\_EACH \}}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{typedef} \textcolor{keyword}{union }\{}
+\DoxyCodeLine{20     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} value;}
+\DoxyCodeLine{21     \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{22         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} x;}
+\DoxyCodeLine{23         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} y;}
+\DoxyCodeLine{24         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} z;}
+\DoxyCodeLine{25         \textcolor{keywordtype}{char} w;}
+\DoxyCodeLine{26     \} e;}
+\DoxyCodeLine{27 \} \mbox{\hyperlink{unionMapEntry}{MapEntry}};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{30     \textcolor{keywordtype}{int} dx;}
+\DoxyCodeLine{31     \textcolor{keywordtype}{int} dy;}
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} dz;}
+\DoxyCodeLine{33     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} mask;}
+\DoxyCodeLine{34     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} size;}
+\DoxyCodeLine{35     \mbox{\hyperlink{unionMapEntry}{MapEntry}} *data;}
+\DoxyCodeLine{36 \} \mbox{\hyperlink{structMap}{Map}};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keywordtype}{void} map\_alloc(\mbox{\hyperlink{structMap}{Map}} *map, \textcolor{keywordtype}{int} dx, \textcolor{keywordtype}{int} dy, \textcolor{keywordtype}{int} dz, \textcolor{keywordtype}{int} mask);}
+\DoxyCodeLine{39 \textcolor{keywordtype}{void} map\_free(\mbox{\hyperlink{structMap}{Map}} *map);}
+\DoxyCodeLine{40 \textcolor{keywordtype}{void} map\_copy(\mbox{\hyperlink{structMap}{Map}} *dst, \mbox{\hyperlink{structMap}{Map}} *src);}
+\DoxyCodeLine{41 \textcolor{keywordtype}{void} map\_grow(\mbox{\hyperlink{structMap}{Map}} *map);}
+\DoxyCodeLine{42 \textcolor{keywordtype}{int} map\_set(\mbox{\hyperlink{structMap}{Map}} *map, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z, \textcolor{keywordtype}{int} w);}
+\DoxyCodeLine{43 \textcolor{keywordtype}{int} map\_get(\mbox{\hyperlink{structMap}{Map}} *map, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

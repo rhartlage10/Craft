@@ -1,0 +1,28 @@
+digraph "Model"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Model",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" workers" ,fontname="Helvetica"];
+  Node2 [label="Worker",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$structWorker.html",tooltip=" "];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" item" ,fontname="Helvetica"];
+  Node3 [label="WorkerItem",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$structWorkerItem.html",tooltip=" "];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" block_maps\nlight_maps" ,fontname="Helvetica"];
+  Node4 [label="Map",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$structMap.html",tooltip=" "];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" data" ,fontname="Helvetica"];
+  Node5 [label="MapEntry",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$unionMapEntry.html",tooltip=" "];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" chunks" ,fontname="Helvetica"];
+  Node6 [label="Chunk",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$structChunk.html",tooltip=" "];
+  Node4 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" lights\nmap" ,fontname="Helvetica"];
+  Node7 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" signs" ,fontname="Helvetica"];
+  Node7 [label="SignList",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$structSignList.html",tooltip=" "];
+  Node8 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" data" ,fontname="Helvetica"];
+  Node8 [label="Sign",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$structSign.html",tooltip=" "];
+  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" players" ,fontname="Helvetica"];
+  Node9 [label="Player",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$structPlayer.html",tooltip=" "];
+  Node10 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" state\nstate1\nstate2" ,fontname="Helvetica"];
+  Node10 [label="State",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$structState.html",tooltip=" "];
+  Node11 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" block0\nblock1\ncopy0\ncopy1" ,fontname="Helvetica"];
+  Node11 [label="Block",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$structBlock.html",tooltip=" "];
+}
