@@ -20,7 +20,13 @@
 #include "util.h"
 #include "world.h"
 
-#define MAX_CHUNKS 8192
+/**
+ * @file main.c
+ * @brief File called at Craft startup 
+ */
+
+
+#define MAX_CHUNKS 8192 /**< Sets the maximum allowed chunks */
 #define MAX_PLAYERS 128
 #define WORKERS 4
 #define MAX_TEXT_LENGTH 256
