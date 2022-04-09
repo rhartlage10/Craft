@@ -20,7 +20,13 @@
 #include "util.h"
 #include "world.h"
 
-#define MAX_CHUNKS 8192
+/**
+ * @file main.c
+ * @brief File called at Craft startup 
+ */
+
+
+#define MAX_CHUNKS 8192 /**< Sets the maximum allowed chunks */
 #define MAX_PLAYERS 128
 #define WORKERS 4
 #define MAX_TEXT_LENGTH 256
@@ -135,6 +141,8 @@ typedef struct {
     int observe1;
     int observe2;
     int flying;
+    int speed;
+    int doubleSpeed;
     int item_index;
     int scale;
     int ortho;
@@ -2434,11 +2442,15 @@ void handle_movement(double dt) {
                 vy = 1;
             }
             else if (dy == 0) {
-                dy = 8;
+                dy = 9;
             }
         }
     }
     float speed = g->flying ? 20 : 5;
+    // hold 'Q' to double the speed
+    if (glfwGetKey(g->window, CRAFT_KEY_SPRINT)) {
+    	speed *= 2;
+    }
     int estimate = roundf(sqrtf(
         powf(vx * speed, 2) +
         powf(vy * speed + ABS(dy) * 2, 2) +
@@ -2453,7 +2465,7 @@ void handle_movement(double dt) {
             dy = 0;
         }
         else {
-            dy -= ut * 25;
+            dy -= ut * 5;
             dy = MAX(dy, -250);
         }
         s->x += vx;

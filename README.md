@@ -4,7 +4,9 @@ Minecraft clone for Windows, Mac OS X and Linux. Just a few thousand lines of C 
 
 Credit to Michael Fogleman for the bulk of the code used in this forked project.
 
-![Screenshot](https://i.imgur.com/SH7wcas.png)
+### Ctrl Alt Elite's Version
+<img width="1018" alt="new-moon-theme" src="https://user-images.githubusercontent.com/58226843/162580528-dae3d2e8-be07-45ce-8b5b-937d77553d7d.png">
+
 
 ### Contributors to This Forked Project
 
@@ -13,6 +15,16 @@ Credit to Michael Fogleman for the bulk of the code used in this forked project.
 * Benjamin Hardesty
 
 ### Features Added By Ronni, Mad, and Ben
+
+* New Theme: "The Moon"
+  * Rocky terrain
+  * Dark sky
+  * Stars in the sky (removed clouds)
+  * Decreased gravity 
+* Sprint ability by holding Q
+
+### Fogleman's Version
+![Screenshot](https://i.imgur.com/SH7wcas.png)
 
 ### Features by Michael Fogleman
 
@@ -89,6 +101,7 @@ python server.py [HOST [PORT]]
 ### Controls
 
 - WASD to move forward, left, backward, right.
+- Q to sprint.
 - Space to jump.
 - Left Click to destroy a block.
 - Right Click or Cmd + Left Click to create a block.
