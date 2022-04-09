@@ -2436,7 +2436,7 @@ void handle_movement(double dt) {
                 vy = 1;
             }
             else if (dy == 0) {
-                dy = 18;
+                dy = 9;
             }
         }
     }
@@ -2459,7 +2459,7 @@ void handle_movement(double dt) {
             dy = 0;
         }
         else {
-            dy -= ut * 25;
+            dy -= ut * 5;
             dy = MAX(dy, -250);
         }
         s->x += vx;
