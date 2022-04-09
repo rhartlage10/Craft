@@ -2436,7 +2436,7 @@ void handle_movement(double dt) {
                 vy = 1;
             }
             else if (dy == 0) {
-                dy = 8;
+                dy = 18;
             }
         }
     }
