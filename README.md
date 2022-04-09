@@ -20,6 +20,7 @@ Credit to Michael Fogleman for the bulk of the code used in this forked project.
   * Rocky terrain
   * Dark sky
   * Stars in the sky (removed clouds)
+  * Decreased gravity 
 * Sprint ability by holding Q
 
 ### Fogleman's Version
