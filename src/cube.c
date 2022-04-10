@@ -79,6 +79,56 @@ void make_cube_faces(
     }
 }
 
+void make_earth_cube_faces(float *data, int left, int right, int top, int bottom, int front, int back, int x, int y, int z, float n) {
+     static const float positions[6][4][3] = {
+        {{-1, -1, -1}, {-1, -1, +1}, {-1, +1, -1}, {-1, +1, +1}},
+        {{+1, -1, -1}, {+1, -1, +1}, {+1, +1, -1}, {+1, +1, +1}},
+        {{-1, +1, -1}, {-1, +1, +1}, {+1, +1, -1}, {+1, +1, +1}},
+        {{-1, -1, -1}, {-1, -1, +1}, {+1, -1, -1}, {+1, -1, +1}},
+        {{-1, -1, -1}, {-1, +1, -1}, {+1, -1, -1}, {+1, +1, -1}},
+        {{-1, -1, +1}, {-1, +1, +1}, {+1, -1, +1}, {+1, +1, +1}}
+    };
+    static const float normals[6][3] = {
+        {-1, 0, 0},
+        {+1, 0, 0},
+        {0, +1, 0},
+        {0, -1, 0},
+        {0, 0, -1},
+        {0, 0, +1}
+    };
+    static const float uvs[6][4][2] = {
+        {{0, 0}, {1, 0}, {0, 1}, {1, 1}},
+        {{1, 0}, {0, 0}, {1, 1}, {0, 1}},
+        {{0, 1}, {0, 0}, {1, 1}, {1, 0}},
+        {{0, 0}, {0, 1}, {1, 0}, {1, 1}},
+        {{0, 0}, {0, 1}, {1, 0}, {1, 1}},
+        {{1, 0}, {1, 1}, {0, 0}, {0, 1}}
+    };
+     static const float indices[6][6] = {
+        {0, 3, 2, 0, 1, 3},
+        {0, 3, 1, 0, 2, 3},
+        {0, 3, 2, 0, 1, 3},
+        {0, 3, 1, 0, 2, 3},
+        {0, 3, 2, 0, 1, 3},
+        {0, 3, 1, 0, 2, 3}
+    };
+    float *d = data;
+    int faces[6] = {left, right, top, bottom, front, back};
+    for (int i = 0; i < 1; i++) {
+      for (int v = 0; v < 6; v++) {
+            int j =  indices[3][v];
+            *(d++) = x + n * positions[3][j][0];
+            *(d++) = y + n * positions[3][j][1];
+            *(d++) = z + n * positions[3][j][2];
+            *(d++) = normals[3][0];
+            *(d++) = normals[3][1];
+            *(d++) = normals[3][2];
+            *(d++) = uvs[i][j][0];
+            *(d++) = uvs[i][j][1];
+        }
+    }
+}
+
 void make_cube(
     float *data, float ao[6][4], float light[6][4],
     int left, int right, int top, int bottom, int front, int back,

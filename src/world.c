@@ -74,11 +74,6 @@ void create_world(int p, int q, world_func func, void *arg) {
 		    }
 		}
             }
-	    // Earth
-	    //if (SHOW_EARTH) {
-	    //	int y=100, z=100;
-	    //	func (x, y, z, 35 * flag, arg);
-	    //}
         }
     }
 }
