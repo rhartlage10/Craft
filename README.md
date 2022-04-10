@@ -21,6 +21,7 @@ Credit to Michael Fogleman for the bulk of the code used in this forked project.
   * Dark sky
   * Stars in the sky (removed clouds)
   * Decreased gravity 
+  * View of Earth in the sky
 * Sprint ability by holding Q
 
 ### Fogleman's Version
