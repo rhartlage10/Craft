@@ -262,6 +262,13 @@ GLuint gen_sky_buffer() {
     return gen_buffer(sizeof(data), data);
 }
 
+GLuint gen_earth_buffer() {
+    GLfloat *data = malloc_faces(8, 1);
+    // make_earth_cube_faces(data, 1, 1, 1, 1, 1, 1, 0, 10*32, 0, 10);
+    make_earth_cube_faces(data, 1, 1, 1, 1, 1, 1, 0, 10*15, 100, 10);
+    return gen_faces(8, 1, data);
+}
+
 GLuint gen_cube_buffer(float x, float y, float z, float n, int w) {
     GLfloat *data = malloc_faces(10, 6);
     float ao[6][4] = {0};
@@ -1739,6 +1746,20 @@ void render_sky(Attrib *attrib, Player *player, GLuint buffer) {
     draw_triangles_3d(attrib, buffer, 512 * 3);
 }
 
+void render_earth(Attrib *attrib, Player *player, GLuint buffer) {
+    State *s = &player->state;
+    float matrix[16];
+    set_matrix_3d(
+        matrix, g->width, g->height,
+        0, 0, 0, s->rx, s->ry, g->fov, g->ortho, g->render_radius);
+    glUseProgram(attrib->program);
+    glUniformMatrix4fv(attrib->matrix, 1, GL_FALSE, matrix);
+    glUniform1i(attrib->sampler, 4);
+    draw_triangles_3d(attrib, buffer, 512);
+    //glUniform1f(attrib->timer, time_of_day());
+    //draw_triangles_3d(attrib, buffer, 512 * 3);
+}
+
 void render_wireframe(Attrib *attrib, Player *player) {
     State *s = &player->state;
     float matrix[16];
@@ -2655,6 +2676,16 @@ int main(int argc, char **argv) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     load_png_texture("textures/sky.png");
 
+    GLuint earth;
+    glGenTextures(1, &earth);
+    glActiveTexture(GL_TEXTURE4);
+    glBindTexture(GL_TEXTURE_2D, earth);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    load_png_texture("textures/earth.png");
+
     GLuint sign;
     glGenTextures(1, &sign);
     glActiveTexture(GL_TEXTURE3);
@@ -2668,6 +2699,7 @@ int main(int argc, char **argv) {
     Attrib line_attrib = {0};
     Attrib text_attrib = {0};
     Attrib sky_attrib = {0};
+    Attrib earth_attrib = {0};
     GLuint program;
 
     program = load_program(
@@ -2709,6 +2741,16 @@ int main(int argc, char **argv) {
     sky_attrib.matrix = glGetUniformLocation(program, "matrix");
     sky_attrib.sampler = glGetUniformLocation(program, "sampler");
     sky_attrib.timer = glGetUniformLocation(program, "timer");
+
+    program = load_program(
+        "shaders/earth_vertex.glsl", "shaders/earth_fragment.glsl");
+    earth_attrib.program = program;
+    earth_attrib.position = glGetAttribLocation(program, "position");
+    earth_attrib.normal = glGetAttribLocation(program, "normal");
+    earth_attrib.uv = glGetAttribLocation(program, "uv");
+    earth_attrib.matrix = glGetUniformLocation(program, "matrix");
+    earth_attrib.sampler = glGetUniformLocation(program, "sampler");
+    earth_attrib.timer = glGetUniformLocation(program, "timer");
 
     // CHECK COMMAND LINE ARGUMENTS //
     if (argc == 2 || argc == 3) {
@@ -2768,6 +2810,7 @@ int main(int argc, char **argv) {
         double last_commit = glfwGetTime();
         double last_update = glfwGetTime();
         GLuint sky_buffer = gen_sky_buffer();
+        GLuint earth_buffer = gen_earth_buffer();
 
         Player *me = g->players;
         State *s = &g->players->state;
@@ -2846,6 +2889,11 @@ int main(int argc, char **argv) {
             glClear(GL_DEPTH_BUFFER_BIT);
             render_sky(&sky_attrib, player, sky_buffer);
             glClear(GL_DEPTH_BUFFER_BIT);
+
+	    glEnable(GL_BLEND);
+	    render_earth(&earth_attrib, player, earth_buffer);
+	    //glClear(GL_DEPTH_BUFFER_BIT);
+
             int face_count = render_chunks(&block_attrib, player);
             render_signs(&text_attrib, player);
             render_sign(&text_attrib, player);
@@ -2934,6 +2982,7 @@ int main(int argc, char **argv) {
                 g->fov = 65;
 
                 render_sky(&sky_attrib, player, sky_buffer);
+		render_earth(&earth_attrib, player, earth_buffer);
                 glClear(GL_DEPTH_BUFFER_BIT);
                 render_chunks(&block_attrib, player);
                 render_signs(&text_attrib, player);
