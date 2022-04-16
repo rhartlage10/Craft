@@ -3,6 +3,8 @@ Makefile
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
+*/src/html/
+*/src/latex/
 config.py
 build
 craft
