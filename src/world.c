@@ -62,14 +62,16 @@ void create_world(int p, int q, world_func func, void *arg) {
                     }
                 }
             }
-            // stars
+	    ///
+	    /// Show stars int the sky as long as SHOW_STARS value remains = 1
+	    ///
             if (SHOW_STARS) {
-		// stars show from y 100-150
+		/// stars show from y 100-150
 		for (int y = 100; y < 150; y++) {
-		    // simplex3 parameters: : x, y, z, octaves, persistance, lacunarity
-		    // uses perlin noise function simplex3 from noise.c (deps/noise/noise.c)  
+		    /// simplex3 parameters: : x, y, z, octaves, persistance, lacunarity
+		    /// uses perlin noise function simplex3 from noise.c (deps/noise/noise.c)  
 		    if (simplex3(x * 0.01, y * 0.1, z * 0.01, 10, 0.9, 3) > 0.75) {
-			// "16 *" flag is the white block 
+			/// "16 *" flag is the white cloud block 
 			func (x, y, z, 16 * flag, arg);
 		    }
 		}
