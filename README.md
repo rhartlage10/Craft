@@ -20,9 +20,16 @@ Credit to Michael Fogleman for the bulk of the code used in this forked project.
   * Rocky terrain
   * Dark sky
   * Stars in the sky (removed clouds)
-  * Decreased gravity 
-  * View of Earth in the sky
-* Sprint ability by holding Q
+  * Decreased gravity (higher jumps, slower fall time)
+  * View of the Earth in the sky
+* Sprint by holding Q
+* Doxygen formatted comments added 
+  1. run the following commands to produce the doxygen documentation
+    ``` 
+    cd src
+    doxygen
+    ```
+  2. open the html folder generated and click on any of the html files to open the documentation in your browser
 
 ### Fogleman's Version
 ![Screenshot](https://i.imgur.com/SH7wcas.png)
