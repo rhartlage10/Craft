@@ -42,7 +42,7 @@
 #define CRAFT_KEY_CHAT 't'
 #define CRAFT_KEY_COMMAND '/'
 #define CRAFT_KEY_SIGN '`'
-#define CRAFT_KEY_SPRINT 'Q'
+#define CRAFT_KEY_SPRINT 'Q' /**< Designate Q key for sprinting */
 
 // advanced parameters
 #define CREATE_CHUNK_RADIUS 10

@@ -141,8 +141,8 @@ typedef struct {
     int observe1;
     int observe2;
     int flying;
-    int speed;
-    int doubleSpeed;
+    int speed; /**< Walking speed */
+    int doubleSpeed; /**< Sprinting speed */
     int item_index;
     int scale;
     int ortho;
@@ -2472,7 +2472,9 @@ void handle_movement(double dt) {
         }
     }
     float speed = g->flying ? 20 : 5;
-    // hold 'Q' to double the speed
+    ///
+    /// hold sprint key (Q) to sprint (double the speed)
+    ///
     if (glfwGetKey(g->window, CRAFT_KEY_SPRINT)) {
     	speed *= 2;
     }
