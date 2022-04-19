@@ -24,12 +24,6 @@ Credit to Michael Fogleman for the bulk of the code used in this forked project.
   * View of the Earth in the sky
 * Sprint by holding Q
 * Doxygen formatted comments added 
-  1. run the following commands to produce the doxygen documentation
-    ``` 
-    cd src
-    doxygen
-    ```
-  2. open the html folder generated and click on any of the html files to open the documentation in your browser
 
 ### Fogleman's Version
 ![Screenshot](https://i.imgur.com/SH7wcas.png)
@@ -217,6 +211,23 @@ A textured sky dome is used for the sky. The X-coordinate of the texture represe
 Ambient occlusion is implemented as described on this page:
 
 http://0fps.wordpress.com/2013/07/03/ambient-occlusion-for-minecraft-like-worlds/
+
+#### Doxygen 
+
+The documentation for using Doxygen can be found at the following site:
+
+https://www.doxygen.nl/index.html
+
+##### How to Generate Doxygen Documentation
+  1. add Doxygen formatted comments to source code (see https://www.doxygen.nl/manual/docblocks.html)
+  2. run the following commands
+  
+   
+    cd src
+    doxygen
+    
+    
+  3. open the html folder generated and click on any of the html files to open the documentation in your browser
 
 #### Dependencies
 
