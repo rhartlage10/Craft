@@ -2473,7 +2473,8 @@ void handle_movement(double dt) {
     }
     float speed = g->flying ? 20 : 5;
     ///
-    /// hold sprint key (Q) to sprint (double the speed)
+    /// hold sprint key to double the speed
+    /// @param CRAFT_KEY_SPRINT Q key
     ///
     if (glfwGetKey(g->window, CRAFT_KEY_SPRINT)) {
     	speed *= 2;
@@ -2683,7 +2684,7 @@ int main(int argc, char **argv) {
     load_png_texture("textures/sky.png");
 
     ///
-    /// Load in Earth Texture
+    /// Create Earth Texture
     ///
     GLuint earth;
     glGenTextures(1, &earth);
