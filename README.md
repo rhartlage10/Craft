@@ -4,7 +4,9 @@ Minecraft clone for Windows, Mac OS X and Linux. Just a few thousand lines of C 
 
 Credit to Michael Fogleman for the bulk of the code used in this forked project.
 
-![Screenshot](https://i.imgur.com/SH7wcas.png)
+### Ctrl Alt Elite's Version
+<img width="1018" alt="new-moon-theme" src="https://user-images.githubusercontent.com/58226843/162580528-dae3d2e8-be07-45ce-8b5b-937d77553d7d.png">
+
 
 ### Contributors to This Forked Project
 
@@ -13,6 +15,18 @@ Credit to Michael Fogleman for the bulk of the code used in this forked project.
 * Benjamin Hardesty
 
 ### Features Added By Ronni, Mad, and Ben
+
+* New Theme: "The Moon"
+  * Rocky terrain
+  * Dark sky
+  * Stars in the sky (removed clouds)
+  * Decreased gravity (higher jumps, slower fall time)
+  * View of the Earth in the sky
+* Sprint by holding Q
+* Doxygen formatted comments added 
+
+### Fogleman's Version
+![Screenshot](https://i.imgur.com/SH7wcas.png)
 
 ### Features by Michael Fogleman
 
@@ -89,6 +103,7 @@ python server.py [HOST [PORT]]
 ### Controls
 
 - WASD to move forward, left, backward, right.
+- Q to sprint.
 - Space to jump.
 - Left Click to destroy a block.
 - Right Click or Cmd + Left Click to create a block.
@@ -196,6 +211,23 @@ A textured sky dome is used for the sky. The X-coordinate of the texture represe
 Ambient occlusion is implemented as described on this page:
 
 http://0fps.wordpress.com/2013/07/03/ambient-occlusion-for-minecraft-like-worlds/
+
+#### Doxygen 
+
+The documentation for using Doxygen can be found at the following site:
+
+https://www.doxygen.nl/index.html
+
+##### How to Generate Doxygen Documentation
+  1. add Doxygen formatted comments to source code (see https://www.doxygen.nl/manual/docblocks.html)
+  2. run the following commands
+  
+   
+    cd src
+    doxygen
+    
+    
+  3. open the html folder generated and click on any of the html files to open the documentation in your browser
 
 #### Dependencies
 

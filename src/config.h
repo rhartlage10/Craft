@@ -17,7 +17,7 @@
 // rendering options
 #define SHOW_LIGHTS 1
 #define SHOW_PLANTS 1
-#define SHOW_CLOUDS 1
+#define SHOW_STARS 1 /**< Show stars when value is set to 1 */
 #define SHOW_TREES 1
 #define SHOW_ITEM 1
 #define SHOW_CROSSHAIRS 1
@@ -42,6 +42,7 @@
 #define CRAFT_KEY_CHAT 't'
 #define CRAFT_KEY_COMMAND '/'
 #define CRAFT_KEY_SIGN '`'
+#define CRAFT_KEY_SPRINT 'Q' /**< Designate Q key for sprinting */
 
 // advanced parameters
 #define CREATE_CHUNK_RADIUS 10
