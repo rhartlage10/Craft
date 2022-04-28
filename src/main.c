@@ -2408,7 +2408,6 @@ void create_window() {
         window_width, window_height, "Craft", monitor, NULL);
 }
 
-void handle_mouse_input() {
     int exclusive =
         glfwGetInputMode(g->window, GLFW_CURSOR) == GLFW_CURSOR_DISABLED;
     static double px = 0;
@@ -2417,13 +2416,32 @@ void handle_mouse_input() {
     if (exclusive && (px || py)) {
         double mx, my;
         glfwGetCursorPos(g->window, &mx, &my);
-        float m = 0.0025;
-        s->rx += (mx - px) * m;
+        float m1 = dt * 2.0;
+        float m2 = dt * 1.0;
+        if ((mx - px) > 0.0) {
+            s->rx += m1;
+        }
+        else if ((mx - px) < 0.0) {
+            s->rx -= m1;
+        }
+        else{}
         if (INVERT_MOUSE) {
-            s->ry += (my - py) * m;
+            if ((my - py) > 0.0) {
+                s->ry += m2;
+            }
+            else if ((my - py) < 0.0) {
+                s->ry -= m2;
+            }
+            else{}
         }
         else {
-            s->ry -= (my - py) * m;
+            if ((my - py) > 0.0) {
+                s->ry -= m2;
+            }
+            else if ((my - py) < 0.0) {
+                s->ry += m2;
+            }
+            else{}
         }
         if (s->rx < 0) {
             s->rx += RADIANS(360);
@@ -2861,7 +2879,7 @@ int main(int argc, char **argv) {
             previous = now;
 
             // HANDLE MOUSE INPUT //
-            handle_mouse_input();
+            handle_mouse_input(dt);
 
             // HANDLE MOVEMENT //
             handle_movement(dt);
