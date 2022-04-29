@@ -15,6 +15,10 @@ TEST(Gravity, TestJumpKey) {
 	GTEST_ASSERT_EQ(CRAFT_KEY_JUMP, GLFW_KEY_SPACE);
 }
 
+//[issue] (https://github.com/rhartlage10/CtrlAltElite-Craft/issues/26)
+TEST(Sprint, TestSprintKey) {
+	GTEST_ASSERT_EQ(CRAFT_KEY_SPRINT, 'Q');
+}
 
 int main(int argc, char* argv[])
 {
