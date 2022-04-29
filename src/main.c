@@ -2418,7 +2418,7 @@ void handle_mouse_input(double dt) {
         double mx, my;
         glfwGetCursorPos(g->window, &mx, &my);
         float m1 = dt * 2.0;
-        float m2 = dt * 1.0;
+        float m2 = dt * 0.5;
         if ((mx - px) > 0.0) {
             s->rx += m1;
         }
