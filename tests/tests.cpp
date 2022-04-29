@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+TEST(Assert, empty) { GTEST_ASSERT_EQ(true, true); }
+
 int main(int argc, char* argv[])
 {
 
