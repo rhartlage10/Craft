@@ -11,11 +11,13 @@
 TEST(Assert, empty) { GTEST_ASSERT_EQ(true, true); }
 
 //[issue] (https://github.com/rhartlage10/CtrlAltElite-Craft/issues/9)
+// Tests to see if our jump key is still space
 TEST(Gravity, TestJumpKey) {
 	GTEST_ASSERT_EQ(CRAFT_KEY_JUMP, GLFW_KEY_SPACE);
 }
 
 //[issue] (https://github.com/rhartlage10/CtrlAltElite-Craft/issues/26)
+// Tests to see if our custom sprint key is the Q press
 TEST(Sprint, TestSprintKey) {
 	GTEST_ASSERT_EQ(CRAFT_KEY_SPRINT, 'Q');
 }
