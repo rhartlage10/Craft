@@ -2817,7 +2817,7 @@ int main(int argc, char **argv) {
     // OUTER LOOP //
     int running = 1;
     int playsound = 0;
-    char *soundcmd1 = "aplay -d 2 /CtrlAltElite-Craft/Sounds/ominous-bg-music.wav"
+    char *soundcmd1 = "aplay -d 2 /CtrlAltElite-Craft/Sounds/boing_x.wav"
     while (running) {
         // DATABASE INITIALIZATION //
         if (g->mode == MODE_OFFLINE || USE_CACHE) {
