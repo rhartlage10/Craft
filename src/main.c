@@ -2408,7 +2408,7 @@ void create_window() {
         window_width, window_height, "Craft", monitor, NULL);
 }
 
-void handle_mouse_input() {
+void handle_mouse_input(double dt) {
     int exclusive =
         glfwGetInputMode(g->window, GLFW_CURSOR) == GLFW_CURSOR_DISABLED;
     static double px = 0;
@@ -2417,13 +2417,32 @@ void handle_mouse_input() {
     if (exclusive && (px || py)) {
         double mx, my;
         glfwGetCursorPos(g->window, &mx, &my);
-        float m = 0.0025;
-        s->rx += (mx - px) * m;
+        float m1 = dt * 2.0;
+        float m2 = dt * 0.5;
+        if ((mx - px) > 0.0) {
+            s->rx += m1;
+        }
+        else if ((mx - px) < 0.0) {
+            s->rx -= m1;
+        }
+        else{}
         if (INVERT_MOUSE) {
-            s->ry += (my - py) * m;
+            if ((my - py) > 0.0) {
+                s->ry += m2;
+            }
+            else if ((my - py) < 0.0) {
+                s->ry -= m2;
+            }
+            else{}
         }
         else {
-            s->ry -= (my - py) * m;
+            if ((my - py) > 0.0) {
+                s->ry -= m2;
+            }
+            else if ((my - py) < 0.0) {
+                s->ry += m2;
+            }
+            else{}
         }
         if (s->rx < 0) {
             s->rx += RADIANS(360);
@@ -2441,8 +2460,9 @@ void handle_mouse_input() {
     }
 }
 
-void handle_movement(double dt) {
+int handle_movement(double dt) {
     static float dy = 0;
+    int sound = 0;
     State *s = &g->players->state;
     int sz = 0;
     int sx = 0;
@@ -2467,6 +2487,7 @@ void handle_movement(double dt) {
                 vy = 1;
             }
             else if (dy == 0) {
+                sound = 1;
                 dy = 9;
             }
         }
@@ -2506,6 +2527,7 @@ void handle_movement(double dt) {
     if (s->y < 0) {
         s->y = highest_block(s->x, s->z) + 2;
     }
+    return sound;
 }
 
 void parse_buffer(char *buffer) {
@@ -2794,6 +2816,8 @@ int main(int argc, char **argv) {
 
     // OUTER LOOP //
     int running = 1;
+    int playsound = 0;
+    char *soundcmd1 = "aplay -d 2 /CtrlAltElite-Craft/Sounds/boing_x.wav"
     while (running) {
         // DATABASE INITIALIZATION //
         if (g->mode == MODE_OFFLINE || USE_CACHE) {
@@ -2861,10 +2885,11 @@ int main(int argc, char **argv) {
             previous = now;
 
             // HANDLE MOUSE INPUT //
-            handle_mouse_input();
+            handle_mouse_input(dt);
 
             // HANDLE MOVEMENT //
-            handle_movement(dt);
+            playsound = handle_movement(dt);
+            if (playsound == 1) system(soundcmd1);
 
             // HANDLE DATA FROM SERVER //
             char *buffer = client_recv();
